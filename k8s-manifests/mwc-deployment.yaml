@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mwc-app
+  labels:
+    app: mwc-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mwc-app
+  template:
+    metadata:
+      labels:
+        app: mwc-app
+    spec:
+      containers:
+        - name: server
+          image: fl64/annotation-to-labels:dev0.0.13
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
+              name: flask
+          volumeMounts:
+            - name: mwc-certs
+              mountPath: /tls
+              readOnly: true
+      volumes:
+        - name: mwc-certs
+          secret:
+            secretName: mwc-certs
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mwc-app-svc
+spec:
+  selector:
+    app: mwc-app
+  ports:
+    - port: 443
+      targetPort: flask

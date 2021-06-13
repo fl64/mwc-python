@@ -1,0 +1,11 @@
+version: "3.4"
+
+services:
+  mutating:
+    build: .
+    restart: always
+    ports:
+      - 127.0.0.1:5000:5000
+    volumes:
+      - ./tmp/mwc-tls-key.pem:/tls/tls.key
+      - ./tmp/mwc-tls.pem:/tls/tls.crt

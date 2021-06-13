@@ -1,0 +1,239 @@
+{
+   "kind":"AdmissionReview",
+   "apiVersion":"admission.k8s.io/v1",
+   "request":{
+      "uid":"ebbc44a5-be38-41cc-9eb2-4cd73ce64159",
+      "kind":{
+         "group":"",
+         "version":"v1",
+         "kind":"Pod"
+      },
+      "resource":{
+         "group":"",
+         "version":"v1",
+         "resource":"pods"
+      },
+      "requestKind":{
+         "group":"",
+         "version":"v1",
+         "kind":"Pod"
+      },
+      "requestResource":{
+         "group":"",
+         "version":"v1",
+         "resource":"pods"
+      },
+      "namespace":"mwc-demo",
+      "operation":"CREATE",
+      "userInfo":{
+         "username":"system:serviceaccount:kube-system:replicaset-controller",
+         "uid":"a17cfe52-5c73-44be-9e93-ff0a448c60e9",
+         "groups":[
+            "system:serviceaccounts",
+            "system:serviceaccounts:kube-system",
+            "system:authenticated"
+         ]
+      },
+      "object":{
+         "kind":"Pod",
+         "apiVersion":"v1",
+         "metadata":{
+            "generateName":"echo-6f99d64dfb-",
+            "creationTimestamp":"None",
+            "labels":{
+               "app":"echo",
+               "pod-template-hash":"6f99d64dfb"
+            },
+            "annotations":{
+               "blah/blah":"Blah-blah-blaH",
+               "test.corp/test":"someannotation"
+            },
+            "ownerReferences":[
+               {
+                  "apiVersion":"apps/v1",
+                  "kind":"ReplicaSet",
+                  "name":"echo-6f99d64dfb",
+                  "uid":"74d9f0ce-2a36-4cc6-beff-acf2ac6ddf48",
+                  "controller":true,
+                  "blockOwnerDeletion":true
+               }
+            ],
+            "managedFields":[
+               {
+                  "manager":"kube-controller-manager",
+                  "operation":"Update",
+                  "apiVersion":"v1",
+                  "time":"2021-06-13T21:21:24Z",
+                  "fieldsType":"FieldsV1",
+                  "fieldsV1":{
+                     "f:metadata":{
+                        "f:annotations":{
+                           ".":{
+
+                           },
+                           "f:blah/blah":{
+
+                           },
+                           "f:test.corp/test":{
+
+                           }
+                        },
+                        "f:generateName":{
+
+                        },
+                        "f:labels":{
+                           ".":{
+
+                           },
+                           "f:app":{
+
+                           },
+                           "f:pod-template-hash":{
+
+                           }
+                        },
+                        "f:ownerReferences":{
+                           ".":{
+
+                           },
+                           "k:{\"uid\":\"74d9f0ce-2a36-4cc6-beff-acf2ac6ddf48\"}":{
+                              ".":{
+
+                              },
+                              "f:apiVersion":{
+
+                              },
+                              "f:blockOwnerDeletion":{
+
+                              },
+                              "f:controller":{
+
+                              },
+                              "f:kind":{
+
+                              },
+                              "f:name":{
+
+                              },
+                              "f:uid":{
+
+                              }
+                           }
+                        }
+                     },
+                     "f:spec":{
+                        "f:containers":{
+                           "k:{\"name\":\"echo-http\"}":{
+                              ".":{
+
+                              },
+                              "f:image":{
+
+                              },
+                              "f:imagePullPolicy":{
+
+                              },
+                              "f:name":{
+
+                              },
+                              "f:resources":{
+
+                              },
+                              "f:terminationMessagePath":{
+
+                              },
+                              "f:terminationMessagePolicy":{
+
+                              }
+                           }
+                        },
+                        "f:dnsPolicy":{
+
+                        },
+                        "f:enableServiceLinks":{
+
+                        },
+                        "f:restartPolicy":{
+
+                        },
+                        "f:schedulerName":{
+
+                        },
+                        "f:securityContext":{
+
+                        },
+                        "f:terminationGracePeriodSeconds":{
+
+                        }
+                     }
+                  }
+               }
+            ]
+         },
+         "spec":{
+            "volumes":[
+               {
+                  "name":"default-token-bpcwr",
+                  "secret":{
+                     "secretName":"default-token-bpcwr"
+                  }
+               }
+            ],
+            "containers":[
+               {
+                  "name":"echo-http",
+                  "image":"fl64/echo-http:0.0.5",
+                  "resources":{
+
+                  },
+                  "volumeMounts":[
+                     {
+                        "name":"default-token-bpcwr",
+                        "readOnly":true,
+                        "mountPath":"/var/run/secrets/kubernetes.io/serviceaccount"
+                     }
+                  ],
+                  "terminationMessagePath":"/dev/termination-log",
+                  "terminationMessagePolicy":"File",
+                  "imagePullPolicy":"IfNotPresent"
+               }
+            ],
+            "restartPolicy":"Always",
+            "terminationGracePeriodSeconds":30,
+            "dnsPolicy":"ClusterFirst",
+            "serviceAccountName":"default",
+            "serviceAccount":"default",
+            "securityContext":{
+
+            },
+            "schedulerName":"default-scheduler",
+            "tolerations":[
+               {
+                  "key":"node.kubernetes.io/not-ready",
+                  "operator":"Exists",
+                  "effect":"NoExecute",
+                  "tolerationSeconds":300
+               },
+               {
+                  "key":"node.kubernetes.io/unreachable",
+                  "operator":"Exists",
+                  "effect":"NoExecute",
+                  "tolerationSeconds":300
+               }
+            ],
+            "priority":0,
+            "enableServiceLinks":true,
+            "preemptionPolicy":"PreemptLowerPriority"
+         },
+         "status":{
+
+         }
+      },
+      "oldObject":"None",
+      "dryRun":false,
+      "options":{
+         "kind":"CreateOptions",
+         "apiVersion":"meta.k8s.io/v1"
+      }
+   }
+}

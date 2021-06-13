@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  annotations:
+    aaaa: bbbb
+    test.corp/test: someannotation
+  labels:
+    app: echo
+  name: echo
+  namespace: mwc-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: echo
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: echo
+      annotations:
+        blah/blah: Blah-blah-blaH
+        test.corp/test: someannotation
+    spec:
+      containers:
+      - image: fl64/echo-http:0.0.5
+        name: echo-http
+        resources: {}
+status: {}

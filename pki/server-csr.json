@@ -1,0 +1,8 @@
+{
+  "CN": "mwc-app-svc.mwc-demo.svc",
+  "hosts": ["mwc-app-svc.mwc-demo.svc"],
+  "key": {
+    "algo": "rsa",
+    "size": 2048
+  }
+}
