@@ -1,0 +1,41 @@
+# Default values for mwc-demo.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+image:
+  repository: fl64/mwc-a2l
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "0.0.1"
+
+
+nameOverride: ""
+fullnameOverride: ""
+
+
+podAnnotations: {}
+
+service:
+  type: ClusterIP
+  port: 443
+
+webhook:
+  failurePolicy: Fail
+  namespaceSelector: {}
+  objectSelector:
+    matchLabels:
+      app: echo
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 64Mi
+  requests:
+    cpu: 100m
+    memory: 64Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

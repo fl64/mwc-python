@@ -1,7 +1,8 @@
 REGISTRY_REPO=fl64
-CONTAINER_NAME=annotation-to-labels
+CONTAINER_NAME=mwc-a2l
 VER:=$(shell git describe --tags)
-VER:=$(if $(CONTAINER_VER),$(CONTAINER_VER),"test")
+TMP_VER:=$(shell git rev-parse --short HEAD)
+VER:=$(if $(VER),$(VER),$(TMP_VER))
 
 NAMESPACE=mwc-demo
 

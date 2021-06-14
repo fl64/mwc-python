@@ -4,7 +4,7 @@ import copy
 import base64
 import re
 import logging
-
+import http
 
 def create_app():
     app = Flask(__name__)
@@ -40,10 +40,9 @@ def create_app():
         }
         return jsonify(admissionReview)
 
-    app.route("/health", methods=["GET"])
-
+    @app.route("/health", methods=["GET"])
     def health():
-        return ("", http.HTTPStatus.NO_CONTENT)
+        return ("", http.HTTPStatus.OK)
 
     return app
 

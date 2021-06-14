@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "mwc-demo.fullname" . }}
+  labels:
+    {{- include "mwc-demo.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: flask
+      protocol: TCP
+  selector:
+    {{- include "mwc-demo.selectorLabels" . | nindent 4 }}

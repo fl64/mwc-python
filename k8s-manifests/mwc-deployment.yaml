@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: fl64/annotation-to-labels:dev0.0.13
+          image: fl64/mwc-a2l:0.0.1
           imagePullPolicy: Always
           ports:
             - containerPort: 5000
