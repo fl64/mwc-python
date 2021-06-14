@@ -6,7 +6,7 @@ debug: true
 
 image:
   repository: fl64/mwc-a2l
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "0.0.2"
 
@@ -30,10 +30,10 @@ webhook:
 
 resources:
   limits:
-    cpu: 100m
+    cpu: 20m
     memory: 64Mi
   requests:
-    cpu: 100m
+    cpu: 20m
     memory: 64Mi
 
 nodeSelector: {}
