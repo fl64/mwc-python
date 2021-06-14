@@ -3,6 +3,8 @@ version: "3.4"
 services:
   mutating:
     build: .
+    environment:
+      MWC_LOGLEVEL: DEBUG
     restart: always
     ports:
       - 127.0.0.1:5000:5000

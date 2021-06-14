@@ -5,14 +5,18 @@ import base64
 import re
 import logging
 import http
+import os
 
 def create_app():
     app = Flask(__name__)
-    app.logger.setLevel(logging.DEBUG)
+    logging.basicConfig(
+        level=os.environ.get("MWC_LOGLEVEL", "INFO")
+    )
 
     @app.route('/mutate', methods=['POST'])
     def mutate():
         request_data = request.json
+        app.logger.debug("Get admission review:")
         app.logger.debug(request_data)
         request_data_object = request_data["request"]["object"]
         new_data = copy.deepcopy(request_data)

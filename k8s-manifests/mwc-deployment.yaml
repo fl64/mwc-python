@@ -18,6 +18,16 @@ spec:
         - name: server
           image: fl64/mwc-a2l:0.0.1
           imagePullPolicy: Always
+          command:
+            - /usr/local/bin/gunicorn
+          args:
+            - --certfile=/tls/tls.crt
+            - --keyfile=/tls/tls.key
+            - --workers=2
+            - --bind=0.0.0.0:5000
+            - --timeout=90
+            - --log-level=debug
+            - wsgi:app
           ports:
             - containerPort: 5000
               name: flask

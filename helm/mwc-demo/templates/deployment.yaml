@@ -21,6 +21,20 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          workingDir: /app
+          env:
+          - name: MWC_LOGLEVEL
+            value: "{{ if .Values.debug | default false }}DEBUG{{ else }}INFO{{ end }}"
+          command:
+          - /usr/local/bin/gunicorn
+          args:
+           - --certfile=/tls/tls.crt
+           - --keyfile=/tls/tls.key
+           - --workers=2
+           - --bind=0.0.0.0:5000
+           - --timeout=90
+           - --log-level={{ if .Values.debug | default false }}DEBUG{{ else }}INFO{{ end }}
+           - wsgi:app
           ports:
             - name: flask
               containerPort: 5000
